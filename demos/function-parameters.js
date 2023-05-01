@@ -12,15 +12,12 @@
 // let myMessage = "test this out";
 // print(myMessage);
 
-
-
-function shoot(ball){
-    if (ball == "basketball"){
-        console.log(Score! 3-pointer);
-    }else {
-        console.log("Fail, no score");
-    }
+function shoot(ball) {
+  if (ball == "basketball") {
+    console.log("Score! 3-pointer");
+  } else {
+    console.log("Fail, no score");
+  }
 }
-let basketball = "basketball"
+let basketball = "basketball";
 shoot(basketball);
-
