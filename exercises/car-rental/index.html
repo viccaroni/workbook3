@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Car Rental</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css"
+    />
+  </head>
+  <body>
+    <main class="container">
+      <fieldset>
+        <h4>Vic's Car Rental</h4>
+        <label for="pickupDate">Pickup Date:</label>
+        <input type="date" name="pickupDate" id="pickupDate" />
+
+        <label for="numberofDays">Number Of Days:</label>
+        <input type="number" name="numberOfDays" id="numberOfDays" />
+
+        <h6>Options</h6>
+        <input
+          type="checkbox"
+          name="electronicTollTag"
+          id="electronicTollTag"
+        />
+        <label for="electronicTollTag">Electronic Toll Tag($5.95/day)</label>
+        <br />
+        <input type="checkbox" name="gps" id="gps" />
+        <label for="gps">GPS($7.95/day)</label>
+        <br />
+        <input
+          type="checkbox"
+          name="roadsideAssistance"
+          id="roadsideAssistance"
+        />
+        <label for="roadsideAssistance">Roadside Assistance($10.95/day)</label>
+        <br />
+        <br />
+        <h6>Under 25?</h6>
+        <input type="radio" name="age" id="overAge" />
+        <label for="overAge">No</label>
+        <input type="radio" name="age" id="underAge" />
+        <label for="underAge">Yes</label>
+        <br />
+        <br />
+        <button onclick="calculateCosts();">Estimate Total Cost</button>
+        <br />
+
+        <p id="carRentalCost">Car Rental: $0.00</p>
+        <p id="optionsCost">Options: $0.00</p>
+        <p id="under25Surcharge">Under 25 Surcharge: $0.00</p>
+        <hr />
+        <p id="totalDue">Total Due: $0.00</p>
+      </fieldset>
+    </main>
+    <script>
+        "use strict"
+
+      function calculateCosts() {
+        let extraCosts = 0;
+        let carRentalCosts = 0;
+        let carRentCostsPerDay = 29.99;
+        let ageCosts = 0;
+        let numberOfDays = 0;
+        
+        numberOfDays = parseInt(document.getElementById("numberOfDays").value);
+
+        if (document.getElementById("electronicTollTag").checked) {
+          extraCosts += 5.95;
+        }
+        if (document.getElementById("gps").checked) {
+          extraCosts += 7.95;
+        }
+        if (document.getElementById("roadsideAssistance").checked) {
+          extraCosts += 10.95;
+        }
+        if (document.getElementById("underAge").checked) {
+          ageCosts += 20.99;
+        }
+        if (document.getElementById("overAge").checked) {
+          ageCosts += 0;
+        }
+       
+        carRentalCosts = carRentCostsPerDay * numberOfDays;
+        let total = extraCosts + carRentalCosts + ageCosts;
+
+        document.getElementById("carRentalCost").innerText =
+          "Car Rental: $" + carRentalCosts.toFixed(2);
+
+        document.getElementById("optionsCost").innerText =
+          "Options: $" + extraCosts.toFixed(2);
+
+        document.getElementById("under25Surcharge").innerText =
+          "Under 25 Surcharge: $" + ageCosts.toFixed(2);
+
+        document.getElementById("totalDue").innerText =
+          "Total Due: $" + total.toFixed(2);
+      }
+    </script>
+  </body>
+</html>

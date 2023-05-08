@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkbox Test</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+
+</head>
+<body>
+    <main>
+        <fieldset>
+            <legend>Checkbox Test</legend>
+
+            <input type="checkbox" id="mints" name="mints" value="mints">
+            <label for="mints">IceBreakers</label>
+            <br>
+
+            <input type="checkbox" id="photo" name="photo" value="photo" onclick="showImage()">
+            <label for="photo">Check This Pic Out!</label>
+            <!-- <img src="/images/Deez-Nuts-are-swingin.webp" alt="deez nuts"> -->
+        </fieldset>
+    </main>
+    <script>
+        function showImage(){
+            document.getElementById("photo").checked = true;
+        }
+        
+    </script>
+</body>
+</html>
